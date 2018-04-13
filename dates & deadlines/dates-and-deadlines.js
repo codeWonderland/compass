@@ -10,75 +10,7 @@ function waitForJQuery()
             $(document).ready(function()
             {
                 console.log('in the dom ready');
-                var deadlines = null;
-
-                // Check for deadlines
-                if (Modernizr.localstorage && localStorage.getItem('deadlines') !== null)
-                {
-                    console.log('have deadlines locally');
-                    deadlines = $.parseJSON(localStorage.getItem('deadlines'));
-
-                    // Make sure data is not expired
-                    var twoHours = 1000 * 60 * 60 * 2, // two hours in milliseconds
-                        now = new Date().getTime();
-
-                    if (deadlines.date && now - deadlines.date < twoHours)
-                    {
-                        deadlines = deadlines.records;
-                        handleDeadlines(deadlines);
-                    }
-                    else
-                    {
-                        deadlines = null;
-                    }
-                }
-
-                if (!deadlines)
-                {
-                    console.log('fetching deadlines');
-
-                    var spreadsheetID = "1qXcRHXYAo7tJ4PF1mJQOK6bbIa-UGS3GmpTGr1bBGDA";
-
-                    // Make sure it is public or set to "anyone with link can view" or we can't pull the JSON
-                    // The number after the spreadsheet id is 1 because we are using the first sheet in the
-                    // google sheets doc
-                    var url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/1/public/values?alt=json";
-
-                    var $deaddata = $.ajax({
-                        url: url,
-                        dataType: "jsonp"
-                    });
-
-                    $deaddata.done(function(data)
-                    {
-                        if (!data || !data.feed || !Object.keys(data.feed.entry).length)
-                        {
-                            console.log('Had a problem loading memory data! Data is: ');
-                            console.log(data);
-                            return;
-                        }
-
-                        if (data)
-                        {
-                            console.log('data from sheet:');
-                            console.log(data);
-                        }
-
-                        var storedData =
-                            {
-                                records: data.feed.entry,
-                                date: (new Date).getTime()
-                            };
-
-                        if (Modernizr.localstorage && JSON && JSON.stringify)
-                        {
-                            localStorage.setItem('deadlines', JSON.stringify(storedData));
-                        }
-
-                        deadlines = storedData.records;
-                        handleDeadlines(deadlines);
-                    })
-                }
+                getSheetsData('deadlines', '1qXcRHXYAo7tJ4PF1mJQOK6bbIa-UGS3GmpTGr1bBGDA', '1', handleDeadlines);
             });
         })(jQuery);
     } else
@@ -92,6 +24,77 @@ function waitForJQuery()
 }
 
 waitForJQuery();
+
+function getSheetsData(localStorageName, spreadsheetId, spreadsheetNum, callback)
+{
+    var sheetsData = null;
+
+    // Check for deadlines
+    if (Modernizr.localstorage && localStorage.getItem(localStorageName) !== null)
+    {
+        console.log('have ' + localStorageName + ' data locally');
+        sheetsData = $.parseJSON(localStorage.getItem(localStorageName));
+
+        // Make sure data is not expired
+        var twoHours = 1000 * 60 * 60 * 2, // two hours in milliseconds
+            now = new Date().getTime();
+
+        if (sheetsData.date && now - sheetsData.date < twoHours)
+        {
+            sheetsData = sheetsData.records;
+            callback(sheetsData);
+        }
+        else
+        {
+            sheetsData = null;
+        }
+    }
+
+    if (!sheetsData)
+    {
+        console.log('fetching ' + localStorageName);
+
+        // Make sure it is public or set to "anyone with link can view" or we can't pull the JSON
+        // The number after the spreadsheet id is 1 because we are using the first sheet in the
+        // google sheets doc
+        var url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetId + "/" + spreadsheetNum + "/public/values?alt=json";
+
+        var $ajaxdata = $.ajax({
+            url: url,
+            dataType: "jsonp"
+        });
+
+        $ajaxdata.done(function(data)
+        {
+            if (!data || !data.feed || !Object.keys(data.feed.entry).length)
+            {
+                console.log('Had a problem loading ' + localStorageName + ' data! Data is: ');
+                console.log(data);
+                return;
+            }
+
+            if (data)
+            {
+                console.log('data from sheet:');
+                console.log(data);
+            }
+
+            var storedData =
+                {
+                    records: data.feed.entry,
+                    date: (new Date).getTime()
+                };
+
+            if (Modernizr.localstorage && JSON && JSON.stringify)
+            {
+                localStorage.setItem(localStorageName, JSON.stringify(storedData));
+            }
+
+            sheetsData = storedData.records;
+            callback(sheetsData);
+        })
+    }
+}
 
 function handleDeadlines(deadlines)
 {
