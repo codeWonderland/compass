@@ -95,6 +95,9 @@ waitForJQuery();
 
 function handleDeadlines(deadlines)
 {
+    $deadlineContainer = $('tbody.deadline-container')[0];
+
+    $deadlineContainer.innerHTML = '<tr><td><div class="loader"></div></td></tr>';
     console.log(deadlines);
     console.log('handling deadlines');
 
@@ -159,7 +162,7 @@ function handleDeadlines(deadlines)
 
     console.log('Finished formatting data: ' + deadlinesString);
 
-    $('tbody.deadline-container')[0].innerHTML = deadlinesString;
+    $deadlineContainer.innerHTML = deadlinesString;
 }
 
 function orderDeadlines(deadlines)
@@ -199,5 +202,39 @@ function formatDeadlineHTML(deadline)
     {
         console.log('Invalid Deadline Format: ' + deadline);
         return ''
+    }
+}
+
+function filterDeadlines()
+{
+    if (Modernizr.localstorage && localStorage.getItem('deadlines') !== null)
+    {
+        console.log('have deadlines locally, filtering');
+        var deadlines = $.parseJSON(localStorage.getItem('deadlines'));
+
+        var category = $('#category-select').getAttribute('value');
+        var term = $('#term-select').getAttribute('value');
+
+        // Filter category first as that will theoretically remove the most
+        // Things out if the client stays on top of removing old term data
+        if (category !== 'any')
+        {
+            deadlines.filter(function(deadline) {
+                return deadline.gsx$category.$t === category;
+            })
+        }
+
+        if (term !== 'any')
+        {
+            deadlines.filter(function (deadline) {
+                return deadline.gsx$term.$t === term;
+            })
+        }
+
+        handleDeadlines(deadlines);
+    }
+    else
+    {
+        alert('Please wait for the deadlines to load before filtering them');
     }
 }

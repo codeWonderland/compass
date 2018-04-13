@@ -1,0 +1,29 @@
+<div class="deadlines-container">
+    <form class="deadline-filter">
+        <label for="category-select">Category</label>
+        <select name="category" id="category-select" title="Category Select for Deadlines Table">
+            <option value="any">--Any--</option>
+        </select>
+        <label for="term-select">Term</label>
+        <select name="term" id="term-select" title="Term Select for Deadlines Table">
+            <option value="any">--Any--</option>
+        </select>
+        <input type="button" onclick="filterDeadlines()" value="Filter">
+    </form>
+    <table class="deadlines-table">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Category</th>
+        </tr>
+        </thead>
+        <tbody class="deadlines-container">
+        <tr>
+            <td colspan="3">
+                <div class="loader"></div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
