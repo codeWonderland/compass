@@ -12,5 +12,9 @@ div.loader {
     transform: rotate(0deg); }
   100% {
     transform: rotate(360deg); } }
+div.deadline-filter {
+  display: flex; }
+  div.deadline-filter div.select-container {
+    margin-right: 1rem; }
 
 /*# sourceMappingURL=dates-and-deadlines.css.map */

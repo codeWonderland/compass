@@ -11,6 +11,8 @@ function waitForJQuery()
             {
                 console.log('in the dom ready');
                 getSheetsData('deadlines', '1qXcRHXYAo7tJ4PF1mJQOK6bbIa-UGS3GmpTGr1bBGDA', '1', handleDeadlines);
+                getSheetsData('deadlines-categories', '1qXcRHXYAo7tJ4PF1mJQOK6bbIa-UGS3GmpTGr1bBGDA', '2', handleDeadlineCategories);
+                getSheetsData('deadlines-terms', '1qXcRHXYAo7tJ4PF1mJQOK6bbIa-UGS3GmpTGr1bBGDA', '3', handleDeadlineTerms);
             });
         })(jQuery);
     } else
@@ -98,7 +100,7 @@ function getSheetsData(localStorageName, spreadsheetId, spreadsheetNum, callback
 
 function handleDeadlines(deadlines)
 {
-    $deadlineContainer = $('tbody.deadline-container')[0];
+    var $deadlineContainer = $('tbody.deadline-container')[0];
 
     $deadlineContainer.innerHTML = '<tr><td><div class="loader"></div></td></tr>';
     console.log(deadlines);
@@ -163,9 +165,30 @@ function handleDeadlines(deadlines)
             '</tr>'
     }
 
-    console.log('Finished formatting data: ' + deadlinesString);
+    console.log('Finished formatting data');
 
     $deadlineContainer.innerHTML = deadlinesString;
+}
+
+function handleDeadlineCategories(categories)
+{
+    $(categories).each(function () {
+        $('#category-select').append($('<option>', {
+            value: this.gsx$category.$t,
+            text : this.gsx$category.$t
+        }));
+    });
+}
+
+function handleDeadlineTerms(terms)
+{
+    $(terms).each(function () {
+        console.log(this);
+        $('#term-select').append($('<option>', {
+            value: this.title.$t,
+            text : this.title.$t
+        }));
+    });
 }
 
 function orderDeadlines(deadlines)
@@ -215,21 +238,21 @@ function filterDeadlines()
         console.log('have deadlines locally, filtering');
         var deadlines = $.parseJSON(localStorage.getItem('deadlines'));
 
-        var category = $('#category-select').getAttribute('value');
-        var term = $('#term-select').getAttribute('value');
+        var category = $('#category-select').attr('value');
+        var term = $('#term-select').attr('value');
 
         // Filter category first as that will theoretically remove the most
         // Things out if the client stays on top of removing old term data
         if (category !== 'any')
         {
-            deadlines.filter(function(deadline) {
+            deadlines.records.filter(function(deadline) {
                 return deadline.gsx$category.$t === category;
             })
         }
 
         if (term !== 'any')
         {
-            deadlines.filter(function (deadline) {
+            deadlines.records.filter(function (deadline) {
                 return deadline.gsx$term.$t === term;
             })
         }
