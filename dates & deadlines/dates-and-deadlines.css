@@ -20,5 +20,10 @@ div.deadline-filter {
   display: flex; }
   div.deadline-filter div.select-container {
     margin-right: 1rem; }
+  div.deadline-filter div.filter-button-container {
+    position: relative; }
+    div.deadline-filter div.filter-button-container button.btn {
+      position: absolute;
+      bottom: 0; }
 
 /*# sourceMappingURL=dates-and-deadlines.css.map */

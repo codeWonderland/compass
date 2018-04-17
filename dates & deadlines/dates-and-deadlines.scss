@@ -29,4 +29,15 @@ div.deadline-filter
   {
     margin-right: 1rem;
   }
+
+  div.filter-button-container
+  {
+    position: relative;
+
+    button.btn
+    {
+      position: absolute;
+      bottom: 0;
+    }
+  }
 }

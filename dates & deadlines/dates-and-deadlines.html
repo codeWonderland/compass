@@ -12,7 +12,9 @@
                 <option value="any">--Any--</option>
             </select>
         </div>
-        <input type="button" onclick="filterDeadlines()" value="Filter">
+        <div class="filter-button-container">
+            <button class="btn" onclick="filterDeadlines()">Filter</button>
+        </div>
     </div>
     <table class="deadlines-table tablesaw tablesaw-stack stripe-even" data-tablesaw-mode="stack" tabindex="0" border="1">
         <thead>
