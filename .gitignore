@@ -1,1 +1,9 @@
 # Created by .ignore support plugin (hsz.mobi)
+
+# IntelliJ project files
+out
+gen
+.idea/
+
+# Vim Swap Files
+*.swp

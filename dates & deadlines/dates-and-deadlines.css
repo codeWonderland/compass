@@ -1,11 +1,15 @@
-div.loader {
-  width: 50px;
-  height: 50px;
-  margin: auto;
-  background: transparent;
-  border: 1rem solid #e6e6e6;
-  border-top: 1rem solid #236192;
-  animation: spin 1s linear infinite; }
+table.deadlines-table {
+  width: 100%;
+  margin: 1rem 0; }
+  table.deadlines-table div.loader {
+    width: 50px;
+    height: 50px;
+    margin: 3rem auto;
+    background: transparent;
+    border: 1rem solid #e6e6e6;
+    border-top: 1rem solid #236192;
+    animation: spin 1s linear infinite;
+    border-radius: 50%; }
 
 @keyframes spin {
   0% {

@@ -102,7 +102,7 @@ function handleDeadlines(deadlines)
 {
     var $deadlineContainer = $('tbody.deadline-container')[0];
 
-    $deadlineContainer.innerHTML = '<tr><td><div class="loader"></div></td></tr>';
+    $deadlineContainer.innerHTML = '<tr><td colspan="3"><div class="loader"></div></td></tr>';
     console.log(deadlines);
     console.log('handling deadlines');
 
@@ -236,7 +236,7 @@ function filterDeadlines()
     if (Modernizr.localstorage && localStorage.getItem('deadlines') !== null)
     {
         console.log('have deadlines locally, filtering');
-        var deadlines = $.parseJSON(localStorage.getItem('deadlines'));
+        var deadlines = $.parseJSON(localStorage.getItem('deadlines')).records;
 
         var category = $('#category-select').attr('value');
         var term = $('#term-select').attr('value');
@@ -245,16 +245,12 @@ function filterDeadlines()
         // Things out if the client stays on top of removing old term data
         if (category !== 'any')
         {
-            deadlines.records.filter(function(deadline) {
-                return deadline.gsx$category.$t === category;
-            })
+            deadlines = deadlines.filter(deadline => deadline.gsx$category.$t === category);
         }
 
         if (term !== 'any')
         {
-            deadlines.records.filter(function (deadline) {
-                return deadline.gsx$term.$t === term;
-            })
+            deadlines = deadlines.filter(deadline => deadline.gsx$term.$t === term);
         }
 
         handleDeadlines(deadlines);
