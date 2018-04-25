@@ -217,7 +217,7 @@ function formatDeadlineHTML(deadline)
             '       <p>' +
             (
                 deadline.gsx$link.$t != '' ?
-                    '<a href="' + deadline.gsx$link.$t + '">' + deadline.gsx$description.$t + '</a>' :
+                    '<a href="' + deadline.gsx$link.$t + '" target="_blank">' + deadline.gsx$description.$t + '</a>' :
                     deadline.gsx$description.$t
             ) +
             '       </p>' +

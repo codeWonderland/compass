@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:300");
+div.my-grid {
+  font-weight: 300;
+  margin: 1rem auto;
+  grid-auto-flow: dense;
+  position: relative;
+  display: grid;
+  grid-auto-rows: 160px;
+  grid-gap: 1rem; }
+  @media only screen and (min-width: 768px) {
+    div.my-grid {
+      grid-template-columns: repeat(auto-fit, 160px); } }
+  @media only screen and (max-width: 768px) {
+    div.my-grid {
+      grid-template-columns: 1fr; } }
+  div.my-grid div.box {
+    width: 100%;
+    height: 100%;
+    min-height: 160px; }
+    div.my-grid div.box div.content-container {
+      padding: 1rem; }
+      div.my-grid div.box div.content-container p {
+        color: white;
+        margin-top: 0;
+        font-size: 32px; }
+    div.my-grid div.box.red {
+      background: #cd545b; }
+    div.my-grid div.box.purple {
+      background: #4b384c; }
+    div.my-grid div.box.yellow {
+      background: #f1b434; }
+    div.my-grid div.box.green {
+      background: #74aa50; }
+    div.my-grid div.box.blue {
+      background: #00a9e0; }
+    @media only screen and (max-width: 768px) {
+      div.my-grid div.box:not(.content) {
+        display: none; } }
+    @media only screen and (min-width: 768px) {
+      div.my-grid div.box.two-wide {
+        grid-column: span 2; }
+        div.my-grid div.box.two-wide div.content-container {
+          display: grid;
+          grid-template-columns: 1fr 3fr; }
+          div.my-grid div.box.two-wide div.content-container img {
+            grid-column: 1; }
+          div.my-grid div.box.two-wide div.content-container p {
+            grid-column: 2;
+            padding: 0.5rem; }
+          div.my-grid div.box.two-wide div.content-container h2 {
+            grid-column: span 2;
+            padding: 0 2rem;
+            font-size: 48px;
+            line-height: 42px;
+            color: #fff; }
+      div.my-grid div.box.two-tall {
+        grid-row: span 2; }
+        div.my-grid div.box.two-tall.blue div.content-container p {
+          grid-row: 1; }
+        div.my-grid div.box.two-tall.blue div.content-container img {
+          grid-row: 2; }
+        div.my-grid div.box.two-tall div.content-container {
+          display: grid;
+          grid-template-rows: 1fr 1fr; }
+          div.my-grid div.box.two-tall div.content-container img {
+            grid-row: 1; }
+          div.my-grid div.box.two-tall div.content-container p {
+            grid-row: 2; }
+      div.my-grid div.box.three-wide {
+        grid-column: span 3; }
+        div.my-grid div.box.three-wide div.content-container {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr; }
+          div.my-grid div.box.three-wide div.content-container img {
+            grid-column: 1 / 2; }
+          div.my-grid div.box.three-wide div.content-container p {
+            padding: 1.5rem 2rem;
+            grid-column: 2 / span 2; }
+            div.my-grid div.box.three-wide div.content-container p.less-padding {
+              padding: 0.5rem 2rem; }
+            div.my-grid div.box.three-wide div.content-container p.wide {
+              padding: 1.5rem 1rem; }
+      div.my-grid div.box.big {
+        grid-column: span 2;
+        grid-row: span 2; }
+        div.my-grid div.box.big.blue div.content-container {
+          display: grid;
+          grid-template-columns: 1fr auto 1.5fr;
+          grid-template-rows: 1.75fr 1fr; }
+          div.my-grid div.box.big.blue div.content-container img {
+            grid-column: 2;
+            grid-row: 1; }
+          div.my-grid div.box.big.blue div.content-container p {
+            grid-column: 2;
+            grid-row: 2; }
+        div.my-grid div.box.big.purple div.content-container {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          grid-template-rows: 1fr 1fr 1fr; }
+          div.my-grid div.box.big.purple div.content-container p {
+            padding: 1rem;
+            grid-column: 1/ span 2;
+            grid-row: 1/ span 2; }
+          div.my-grid div.box.big.purple div.content-container img {
+            grid-column: 2/ span 2;
+            grid-row: 2/ span 2;
+            width: 85%;
+            margin: auto; } }
+
+/*# sourceMappingURL=records%20and%20registration.css.map */
