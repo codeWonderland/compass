@@ -1,4 +1,29 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:300");
+div.hero-div img.hero {
+  width: 100%;
+  height: 300px;
+  object-fit: cover; }
+div.hero-div div.overlay {
+  top: 0;
+  left: 0;
+  padding: 1rem 3rem 2rem;
+  background: rgba(255, 255, 255, 0.8);
+  margin-top: 0;
+  max-width: 600px; }
+  div.hero-div div.overlay img.compass-logo {
+    width: 50px;
+    float: left;
+    margin-top: 12px; }
+  div.hero-div div.overlay h1:after {
+    content: '';
+    display: block;
+    background: #00a9e0;
+    height: 5px;
+    width: 5em;
+    margin: 1rem 0 -0.5rem; }
+  div.hero-div div.overlay p {
+    font-size: 20px; }
+
 div.my-grid {
   font-weight: 300;
   margin: 1rem auto;
@@ -17,12 +42,18 @@ div.my-grid {
     width: 100%;
     height: 100%;
     min-height: 160px; }
-    div.my-grid div.box div.content-container {
-      padding: 1rem; }
-      div.my-grid div.box div.content-container p {
-        color: white;
-        margin-top: 0;
-        font-size: 32px; }
+    div.my-grid div.box a {
+      color: white; }
+      div.my-grid div.box a div.content-container {
+        padding: 1rem; }
+        div.my-grid div.box a div.content-container p {
+          color: white;
+          margin-top: 0;
+          font-size: 32px; }
+          div.my-grid div.box a div.content-container p strong {
+            color: white; }
+      div.my-grid div.box a:hover {
+        text-decoration: underline; }
     div.my-grid div.box.red {
       background: #cd545b; }
     div.my-grid div.box.purple {

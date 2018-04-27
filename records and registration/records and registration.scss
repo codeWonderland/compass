@@ -1,5 +1,47 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:300');
+@import url("https://fonts.googleapis.com/css?family=Lato:300");
+div.hero-div
+{
+	img.hero
+	{
+		width: 100%;
+		height: 300px;
+		object-fit: cover;
+	}
 
+	div.overlay {
+		top: 0;
+		left: 0;
+		padding: 1rem 3rem 2rem;
+		background: rgba(255, 255, 255, 0.8);
+		margin-top: 0;
+		max-width: 600px;
+
+		img.compass-logo
+		{
+			width: 50px;
+			float: left;
+			margin-top: 12px;
+		}
+
+		h1
+		{
+			&:after
+			{
+				content: '';
+				display: block;
+				background: #00a9e0;
+				height: 5px;
+				width: 5em;
+				margin: 1rem 0 -0.5rem;
+			}
+		}
+
+		p
+		{
+			font-size: 20px;
+		}
+	}
+}
 div.my-grid
 {
   font-weight: 300;
@@ -25,17 +67,32 @@ div.my-grid
 	height: 100%;
 	min-height: 160px;
 
-	div.content-container
-	{
-	  padding: 1rem;
+    a
+    {
+      color: white;
 
-	  p
-	  {
-		color: white;
-		margin-top: 0;
-		font-size: 32px;
-	  }
-	}
+      div.content-container
+      {
+        padding: 1rem;
+
+        p
+        {
+          color: white;
+          margin-top: 0;
+          font-size: 32px;
+
+          strong
+          {
+            color: white;
+          }
+        }
+      }
+
+      &:hover
+      {
+        text-decoration: underline;
+      }
+    }
 
 	&.red
 	{

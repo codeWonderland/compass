@@ -10,15 +10,21 @@ div.hero-div
 	object-fit: cover;
   }
 
-  div.overlay
-  {
-	position: absolute;
-	top: 0;
-	left: 0;
-	padding: 1rem 3rem 2rem;
-	background: rgba(255,255,255,0.8);
-	margin-top: 0;
-	max-width: 600px;
+  div.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 1rem 3rem 2rem;
+    background: rgba(255, 255, 255, 0.8);
+    margin-top: 0;
+    max-width: 600px;
+
+    img.compass-logo
+    {
+      width: 50px;
+      float: left;
+      margin-top: 12px;
+    }
 
 	h1
 	{
@@ -45,39 +51,13 @@ ul.nav-list
   display: grid;
   list-style-type: none;
   grid-gap: 2rem;
-  grid-template-columns: 255px 255px 255px;
-  grid-template-rows: repeat(auto-fit, 255px);
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   margin: 3rem calc((255px * 3 + 5rem) - 100%);
   width: 100%;
-  height: calc(255px * 2 + 4rem);
 
   li
   {
 	width: 100%;
-	background: #00a9e0;
-	text-align: center;
-	color: white;
-	padding: 0 0 100%;
-	display: flex;
-	justify-content: center;
-	align-content: center;
-	position: relative;
-	border-radius: 50%;
-
-	&:hover
-	{
-	  background: #236192;
-	  cursor: pointer;
-	}
-
-	a
-	{
-	  color: white;
-	  position: absolute;
-	  top: 50%;
-	  transform: translate(0, -50%);
-	  font-size: 24px;
-	  padding: 2rem;
-	}
+    height: auto;
   }
 }
