@@ -1,0 +1,17 @@
+img.hero {
+  max-width: unset !important; }
+
+@media only screen and (min-width: 768px) {
+  #microsite-nav > nav {
+    width: 1200px !important; } }
+#page-content a {
+  color: #00a9e0 !important; }
+#page-content p {
+  letter-spacing: 0.2px !important;
+  margin-bottom: 1rem !important; }
+#page-content div.faq-group dl.accordion dd table, #page-content div.faq-group dl.accordion dd p {
+  margin-top: 7px !important; }
+#page-content div.faq-group dl.accordion dd table {
+  margin-left: 1rem !important; }
+
+/*# sourceMappingURL=site-styles.css.map */

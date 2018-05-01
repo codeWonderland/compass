@@ -3,16 +3,17 @@ div.hero-div {
   position: relative; }
   div.hero-div img.hero {
     width: 100%;
-    height: 300px;
-    object-fit: cover; }
+    height: auto; }
   div.hero-div div.overlay {
-    position: absolute;
     top: 0;
     left: 0;
     padding: 1rem 3rem 2rem;
     background: rgba(255, 255, 255, 0.8);
     margin-top: 0;
     max-width: 600px; }
+    @media only screen and (min-width: 768px) {
+      div.hero-div div.overlay {
+        position: absolute; } }
     div.hero-div div.overlay img.compass-logo {
       width: 50px;
       float: left;
@@ -29,11 +30,20 @@ div.hero-div {
 
 ul.nav-list {
   display: grid;
-  list-style-type: none;
-  grid-gap: 2rem;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  margin: 3rem calc((255px * 3 + 5rem) - 100%);
-  width: 100%; }
+  list-style-type: none; }
+  @media only screen and (min-width: 768px) {
+    ul.nav-list {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-gap: 2rem;
+      margin: 3rem calc((255px * 3 + 5rem) - 100%);
+      width: 100%; } }
+  @media only screen and (max-width: 768px) {
+    ul.nav-list {
+      grid-template-columns: 1fr;
+      width: calc(100% - 80px); }
+      ul.nav-list li a img {
+        max-width: unset;
+        width: 100%; } }
   ul.nav-list li {
     width: 100%;
     height: auto; }

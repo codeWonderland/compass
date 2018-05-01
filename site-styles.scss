@@ -1,0 +1,39 @@
+img.hero
+{
+  max-width: unset !important;
+}
+
+@media only screen and (min-width: 768px)
+{
+  #microsite-nav > nav
+  {
+	width: 1200px !important;
+  }
+}
+
+#page-content
+{
+  a
+  {
+	color: #00a9e0 !important;
+  }
+
+  p
+  {
+	letter-spacing: 0.2px !important;
+	margin-bottom: 1rem !important;
+  }
+
+  div.faq-group dl.accordion dd
+  {
+	table, p
+	{
+	  margin-top: 7px !important;
+	}
+
+	table
+	{
+	  margin-left: 1rem !important;
+	}
+  }
+}

@@ -1,8 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:300");
 div.hero-div img.hero {
   width: 100%;
-  height: 300px;
-  object-fit: cover; }
+  height: auto; }
 div.hero-div div.overlay {
   top: 0;
   left: 0;
@@ -30,11 +29,11 @@ div.my-grid {
   grid-auto-flow: dense;
   position: relative;
   display: grid;
-  grid-auto-rows: 160px;
   grid-gap: 1rem; }
   @media only screen and (min-width: 768px) {
     div.my-grid {
-      grid-template-columns: repeat(auto-fit, 160px); } }
+      grid-template-columns: repeat(auto-fit, 160px);
+      grid-auto-rows: 160px; } }
   @media only screen and (max-width: 768px) {
     div.my-grid {
       grid-template-columns: 1fr; } }
@@ -70,8 +69,17 @@ div.my-grid {
     @media only screen and (min-width: 768px) {
       div.my-grid div.box.two-wide {
         grid-column: span 2; }
+        div.my-grid div.box.two-wide h2 {
+          padding: 0 2rem; } }
+    @media only screen and (max-width: 768px) {
+      div.my-grid div.box.two-wide.intro h2 {
+        padding: 3.5rem 2rem;
+        color: white;
+        font-size: 42px; } }
+    div.my-grid div.box.two-wide div.content-container {
+      display: grid; }
+      @media only screen and (min-width: 768px) {
         div.my-grid div.box.two-wide div.content-container {
-          display: grid;
           grid-template-columns: 1fr 3fr; }
           div.my-grid div.box.two-wide div.content-container img {
             grid-column: 1; }
@@ -80,42 +88,53 @@ div.my-grid {
             padding: 0.5rem; }
           div.my-grid div.box.two-wide div.content-container h2 {
             grid-column: span 2;
-            padding: 0 2rem;
             font-size: 48px;
             line-height: 42px;
-            color: #fff; }
+            color: #fff; } }
+    @media only screen and (min-width: 768px) {
       div.my-grid div.box.two-tall {
         grid-row: span 2; }
         div.my-grid div.box.two-tall.blue div.content-container p {
           grid-row: 1; }
         div.my-grid div.box.two-tall.blue div.content-container img {
-          grid-row: 2; }
+          grid-row: 2; } }
+    div.my-grid div.box.two-tall div.content-container {
+      display: grid; }
+      @media only screen and (min-width: 768px) {
         div.my-grid div.box.two-tall div.content-container {
-          display: grid;
           grid-template-rows: 1fr 1fr; }
           div.my-grid div.box.two-tall div.content-container img {
             grid-row: 1; }
           div.my-grid div.box.two-tall div.content-container p {
-            grid-row: 2; }
+            grid-row: 2; } }
+    @media only screen and (min-width: 768px) {
       div.my-grid div.box.three-wide {
-        grid-column: span 3; }
+        grid-column: span 3; } }
+    div.my-grid div.box.three-wide div.content-container {
+      display: grid; }
+      @media only screen and (min-width: 768px) {
         div.my-grid div.box.three-wide div.content-container {
-          display: grid;
           grid-template-columns: 1fr 1fr 1fr; }
           div.my-grid div.box.three-wide div.content-container img {
-            grid-column: 1 / 2; }
-          div.my-grid div.box.three-wide div.content-container p {
-            padding: 1.5rem 2rem;
-            grid-column: 2 / span 2; }
-            div.my-grid div.box.three-wide div.content-container p.less-padding {
-              padding: 0.5rem 2rem; }
-            div.my-grid div.box.three-wide div.content-container p.wide {
-              padding: 1.5rem 1rem; }
+            grid-column: 1 / 2; } }
+      @media only screen and (min-width: 768px) {
+        div.my-grid div.box.three-wide div.content-container p {
+          padding: 1.5rem 2rem;
+          grid-column: 2 / span 2; } }
+      @media only screen and (min-width: 768px) {
+        div.my-grid div.box.three-wide div.content-container p.less-padding {
+          padding: 0.5rem 2rem; } }
+      @media only screen and (min-width: 768px) {
+        div.my-grid div.box.three-wide div.content-container p.wide {
+          padding: 1.5rem 1rem; } }
+    @media only screen and (min-width: 768px) {
       div.my-grid div.box.big {
         grid-column: span 2;
-        grid-row: span 2; }
+        grid-row: span 2; } }
+    div.my-grid div.box.big.blue div.content-container {
+      display: grid; }
+      @media only screen and (min-width: 768px) {
         div.my-grid div.box.big.blue div.content-container {
-          display: grid;
           grid-template-columns: 1fr auto 1.5fr;
           grid-template-rows: 1.75fr 1fr; }
           div.my-grid div.box.big.blue div.content-container img {
@@ -123,19 +142,52 @@ div.my-grid {
             grid-row: 1; }
           div.my-grid div.box.big.blue div.content-container p {
             grid-column: 2;
-            grid-row: 2; }
+            grid-row: 2; } }
+    div.my-grid div.box.big.purple div.content-container {
+      display: grid; }
+      @media only screen and (min-width: 768px) {
         div.my-grid div.box.big.purple div.content-container {
-          display: grid;
           grid-template-columns: 1fr 1fr 1fr;
-          grid-template-rows: 1fr 1fr 1fr; }
+          grid-template-rows: 1fr 1fr 1fr; } }
+      div.my-grid div.box.big.purple div.content-container p {
+        padding: 1rem; }
+        @media only screen and (min-width: 768px) {
           div.my-grid div.box.big.purple div.content-container p {
-            padding: 1rem;
             grid-column: 1/ span 2;
-            grid-row: 1/ span 2; }
+            grid-row: 1/ span 2; } }
+      div.my-grid div.box.big.purple div.content-container img {
+        margin: auto; }
+        @media only screen and (min-width: 768px) {
           div.my-grid div.box.big.purple div.content-container img {
             grid-column: 2/ span 2;
             grid-row: 2/ span 2;
-            width: 85%;
-            margin: auto; } }
+            width: 85%; } }
+
+@media only screen and (max-width: 768px) {
+  div.content-container {
+    grid-template-columns: 1fr !important; }
+    div.content-container p {
+      text-align: center; } }
+@media only screen and (max-width: 768px) {
+  img {
+    width: 35%;
+    margin: 0 auto; } }
+@media only screen and (min-width: 768px) {
+  img.ferpa-mouse {
+    width: 85%;
+    margin: auto; } }
+@media only screen and (min-width: 768px) {
+  img.calendar {
+    width: 85%;
+    margin: 0.25rem auto; } }
+@media only screen and (min-width: 768px) {
+  img.checklist {
+    width: 50%;
+    margin: 0 auto; } }
+img.phone {
+  margin: 0 auto; }
+  @media only screen and (min-width: 768px) {
+    img.phone {
+      width: 43%; } }
 
 /*# sourceMappingURL=records%20and%20registration.css.map */
